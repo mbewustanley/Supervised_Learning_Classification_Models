@@ -1,0 +1,70 @@
+
+stages:
+  Data_Ingestion:
+    cmd: python src/data_ingestion.py
+    deps:
+      - datasets/magic04.data 
+      - src/data_ingestion.py
+    outs:
+      - data/plots
+      - data/raw
+
+
+
+  Data_Scaling:
+    cmd: python src/data_scaling.py
+    deps: 
+      - data/raw
+      - src/data_scaling.py
+    outs:
+      - data
+
+
+
+  K-NearestNeighbors:
+    cmd: python src/Models/knn.py
+    deps: 
+      - data
+      - src/Models/knn.py
+    outs:
+      - knn_model.pkl
+    
+    metric:
+      - knn_metrics.json
+
+
+  Naive_Bayes:
+    cmd: python src/Models/naive_bayes.py
+    deps: 
+      - data
+      - src/Models/naive_bayes.py
+    outs:
+      - nb_model.pkl
+    
+    metric:
+      - nb_metrics.json
+
+  Logistic_Regression:
+    cmd: python src/Models/LR.py
+    deps: 
+      - data
+      - src/Models/LR.py
+    outs:
+      - lr_model.pkl
+
+    metric:
+      - lr_metrics.json
+        
+  Support_Vector_Machine:
+    cmd: python src/Models/SVM.py
+    deps: 
+      - data
+      - src/Models/SVM.py
+    outs:
+      - svm_model.pkl
+
+    metric:
+      - svm_metrics.json
+
+
+ 
