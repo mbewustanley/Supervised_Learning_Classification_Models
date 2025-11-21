@@ -7,10 +7,10 @@ from sklearn.metrics import accuracy_score
 from sklearn.metrics import precision_score, recall_score
 
 #import data
-X_train = np.load('data/X_train.npy')
-y_train = np.load('data/y_train.npy')
-X_test = np.load('data/X_test.npy')
-y_test = np.load('data/y_test.npy')
+X_train = np.load('split_data/X_train.npy')
+y_train = np.load('split_data/y_train.npy')
+X_test = np.load('split_data/X_test.npy')
+y_test = np.load('split_data/y_test.npy')
 
 # initialize model
 nb_model = GaussianNB()

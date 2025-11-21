@@ -31,20 +31,21 @@ def scale_dataset(dataframe, name:str, oversample=False):
     data = np.hstack((X, np.reshape(y, (-1,1))))
 
     try:
-       """ data_path = os.path.join('clean', name)
-        os.makedirs(data_path, exist_ok=True)
-        data.to_csv(os.path.join(name, f'{name}_data.png'), index=False)
-        X.to_csv(os.path.join(name, f'X_{name}.png'), index=False)
-        y.to_csv(os.path.join(name, f'y_{name}.png'), index=False)
-        """
+        
        # Define the file path, for example, in the user's home directory
        # # The `~` represents the home directory
-       file_path = os.path.join(os.path.expanduser("data"), f'{name}_data.npy')
-       np.save(file_path , data)
-       file_path = os.path.join(os.path.expanduser("data"), f'X_{name}.npy')
-       np.save(file_path, X)
-       file_path = os.path.join(os.path.expanduser("data"), f'y_{name}.npy')
-       np.save(file_path, y)
+       save_path = os.path.join('split_data')
+       os.makedirs(save_path, exist_ok=True)
+
+
+       file_path1 = os.path.join(save_path, f'{name}_data.npy')
+       np.save(file_path1 , data)
+
+       file_path2 = os.path.join(save_path, f'X_{name}.npy')
+       np.save(file_path2, X)
+
+       file_path3 = os.path.join(save_path, f'y_{name}.npy')
+       np.save(file_path3, y)
         
     #error handline
     except Exception as e:

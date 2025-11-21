@@ -17,53 +17,53 @@ stages:
       - data/raw
       - src/data_scaling.py
     outs:
-      - data
+      - split_data
 
 
 
   K-NearestNeighbors:
     cmd: python src/Models/knn.py
     deps: 
-      - data
+      - split_data
       - src/Models/knn.py
     outs:
       - knn_model.pkl
     
-    metric:
+    metrics:
       - knn_metrics.json
 
 
   Naive_Bayes:
     cmd: python src/Models/naive_bayes.py
     deps: 
-      - data
+      - split_data
       - src/Models/naive_bayes.py
     outs:
       - nb_model.pkl
     
-    metric:
+    metrics:
       - nb_metrics.json
 
   Logistic_Regression:
     cmd: python src/Models/LR.py
     deps: 
-      - data
+      - split_data
       - src/Models/LR.py
     outs:
       - lr_model.pkl
 
-    metric:
+    metrics:
       - lr_metrics.json
         
   Support_Vector_Machine:
     cmd: python src/Models/SVM.py
     deps: 
-      - data
+      - split_data
       - src/Models/SVM.py
     outs:
       - svm_model.pkl
 
-    metric:
+    metrics:
       - svm_metrics.json
 
 
