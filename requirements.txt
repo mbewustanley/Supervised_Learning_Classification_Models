@@ -1,0 +1,10 @@
+pandas
+numpy
+matplotlib
+kagglehub
+scikit-learn
+tensorflow
+dagshub
+dvc
+mlflow==2.2.2
+imblearn
