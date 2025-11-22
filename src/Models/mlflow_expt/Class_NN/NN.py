@@ -20,8 +20,6 @@ import logging
 dagshub.init(repo_owner='mbewustanley', repo_name='Supervised_Learning_Classification_Models', mlflow=True)
 
 
-
-
 #import data
 X_train = np.load('split_data/X_train.npy')
 y_train = np.load('split_data/y_train.npy')
@@ -49,8 +47,19 @@ with mlflow.start_run():
                 if v_loss < least_val_loss:
                     least_val_loss = v_loss
                     least_val_model = model
-                mlflow.log_param('parameter name', 'value')
-                mlflow.log_metric('metric name', 1)
+                mlflow.log_param('epochs', epochs)
+                mlflow.log_param('num of nodes', num_nodes)
+                mlflow.log_param('dropout prob', dropout_prob)
+                mlflow.log_param('learning rate(lr)', lr)
+                mlflow.log_param('batch size', batch_size)
+
+
+
+
+                mlflow.log_metric('Loss', history.history['loss'])
+                mlflow.log_metric('Validation loss', history.history['val_loss'])
+                mlflow.log_metric('Accuracy', history.history['accuracy'])
+                mlflow.log_metric('Validation accuracy', history.history['val_accuracy'])
                 
                 remote_server_url = "https://dagshub.com/mbewustanley/Supervised_Learning_Classification_Models.mlflow"
                 mlflow.set_tracking_uri(remote_server_url)
@@ -64,7 +73,7 @@ with mlflow.start_run():
                     # please refer to the doc for more information:
                     # https://mlflow.org/docs/latest/model-registry.html#api-workflow
                     mlflow.sklearn.log_model(
-                        lr, "model", registered_model_name="ElasticnetWineModel")
+                        model, "model", registered_model_name="ClassNeuraLNetMAGIC")
                 else:
-                    mlflow.sklearn.log_model(lr, "model")
+                    mlflow.sklearn.log_model(model, "model")
                    
