@@ -10,7 +10,6 @@ stages:
       - data/raw
 
 
-
   Data_Scaling:
     cmd: python src/data_scaling.py
     deps: 
@@ -18,7 +17,6 @@ stages:
       - src/data_scaling.py
     outs:
       - split_data
-
 
 
   K-NearestNeighbors:
@@ -44,6 +42,7 @@ stages:
     metrics:
       - nb_metrics.json
 
+
   Logistic_Regression:
     cmd: python src/Models/LR.py
     deps: 
@@ -54,6 +53,7 @@ stages:
 
     metrics:
       - lr_metrics.json
+        
         
   Support_Vector_Machine:
     cmd: python src/Models/SVM.py
