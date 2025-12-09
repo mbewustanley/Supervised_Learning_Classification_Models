@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Alpha-Gamma Classifier</title>
-    <link rel="stylesheet" href="flask_api/frontend/style.css" />
+    <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 
@@ -15,60 +15,67 @@
         <form id="predictionForm">
             <div class="form-group">
                 <label>fLength</label>
-                <input type="number" step="any" name="fLength" required>
+                <input type="number" placeholder="28.7967" step="any" name="fLength" required>
             </div>
 
             <div class="form-group">
                 <label>fWidth</label>
-                <input type="number" step="any" name="fWidth" required>
+                <input type="number" placeholder="16.0021" step="any" name="fWidth" required>
             </div>
 
             <div class="form-group">
                 <label>fSize</label>
-                <input type="number" step="any" name="fSize" required>
+                <input type="number" placeholder="2.6449" step="any" name="fSize" required>
             </div>
 
             <div class="form-group">
                 <label>fConc</label>
-                <input type="number" step="any" name="fConc" required>
+                <input type="number" placeholder="0.3918" step="any" name="fConc" required>
             </div>
 
             <div class="form-group">
                 <label>fConc1</label>
-                <input type="number" step="any" name="fConc1" required>
+                <input type="number" placeholder="0.1982" step="any" name="fConc1" required>
             </div>
 
             <div class="form-group">
                 <label>fAsym</label>
-                <input type="number" step="any" name="fAsym" required>
+                <input type="number" placeholder="27.7004" step="any" name="fAsym" required>
             </div>
 
             <div class="form-group">
                 <label>fM3Long</label>
-                <input type="number" step="any" name="fM3Long" required>
+                <input type="number" placeholder="22.011" step="any" name="fM3Long" required>
             </div>
 
             <div class="form-group">
                 <label>fM3Trans</label>
-                <input type="number" step="any" name="fM3Trans" required>
+                <input type="number" placeholder="-8.2027" step="any" name="fM3Trans" required>
             </div>
 
             <div class="form-group">
                 <label>fAlpha</label>
-                <input type="number" step="any" name="fAlpha" required>
+                <input type="number" placeholder="40.092" step="any" name="fAlpha" required>
             </div>
 
             <div class="form-group">
                 <label>fDist</label>
-                <input type="number" step="any" name="fDist" required>
+                <input type="number" placeholder="81.8828" step="any" name="fDist" required>
             </div>
-
+            
+            <label for="model">Choose model</label>
+            <select id="model">
+                <option value="knn">KNN</option>
+                <option value="lr">Logistic Regression</option>
+                <option value="svm">SVM</option>
+                <option value="nb">Naive Bayes</option>
+            </select>
             <button type="submit">Predict</button>
         </form>
 
         <div id="result" class="result-box"></div>
     </div>
 
-    <script src="flask_api/frontend/app.js"></script>
+    <script src="app.js"></script>
 </body>
 </html>

@@ -1,43 +1,37 @@
 const form = document.getElementById("predictionForm");
 const resultBox = document.getElementById("result");
 
-form.addEventListener("submit", async (e) => {
+document.getElementById("predictionForm").addEventListener("submit", async (e) => {
     e.preventDefault();
 
-    // Collect form data
-    const formData = new FormData(form);
-    const data = {};
+    const model = document.getElementById("model").value;
 
-    formData.forEach((value, key) => {
-        data[key] = parseFloat(value);
-    });
+    const payload = {
+        model: model,
+        fLength: parseFloat(document.getElementById("fLength").value),
+        fWidth: parseFloat(document.getElementById("fWidth").value),
+        fSize: parseFloat(document.getElementById("fSize").value),
+        fConc: parseFloat(document.getElementById("fConc").value),
+        fConc1: parseFloat(document.getElementById("fConc1").value),
+        fAsym: parseFloat(document.getElementById("fAsym").value),
+        fM3Long: parseFloat(document.getElementById("fM3Long").value),
+        fM3Trans: parseFloat(document.getElementById("fM3Trans").value),
+        fAlpha: parseFloat(document.getElementById("fAlpha").value),
+        fDist: parseFloat(document.getElementById("fDist").value)
+    };
 
     try {
-        // Send request to backend
         const response = await fetch("http://localhost:5000/predict", {
             method: "POST",
             headers: {"Content-Type": "application/json"},
-            body: JSON.stringify(data)
+            body: JSON.stringify(payload)
         });
 
         const result = await response.json();
-
-        // Display prediction
-        resultBox.style.display = "block";
-        resultBox.style.background = result.prediction === 1 ? "#28a745" : "#d9534f";
-        resultBox.style.color = "white";
-
-        resultBox.innerText =
-            result.prediction === 1
-            ? "Prediction: GAMMA (1)"
-            : "Prediction: ALPHA (0)";
+        document.getElementById("result").innerText =
+            `Prediction: ${result.prediction} (Model: ${result.model_used})`;
 
     } catch (error) {
-        console.error("Prediction error:", error);
-
-        resultBox.style.display = "block";
-        resultBox.style.background = "#6c757d";
-        resultBox.style.color = "white";
-        resultBox.innerText = "Error contacting prediction server.";
+        document.getElementById("result").innerText = "Error connecting to backend";
     }
 });

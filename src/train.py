@@ -67,7 +67,7 @@ def load_data(path="data/split_data"):
 
 
 # initialize Knn model
-def initialize_models():
+def initialize_models(output_path="configs/model_config.json"):
     try:
         models = {
             "knn": KNeighborsClassifier(n_neighbors=1),
@@ -75,6 +75,15 @@ def initialize_models():
             "nb": GaussianNB(),
             "svm": SVC()
         }
+
+        configs = {  
+            key: f"models/{key}.pkl "for key in models.keys()
+            }
+        os.makedirs(os.path.dirname(output_path), exist_ok=True)
+
+        # write JSON file
+        with open(output_path, "w") as f:
+            json.dump(configs, f, indent=4)
 
         logger.info("Models initialized successfully.")
         return models
@@ -85,7 +94,7 @@ def initialize_models():
 
 
 
-def train_models(models: dict, X_train, y_train):
+def train_models(models: dict, X_train, y_train,):
     trained = {}
     
     for name, model in models.items():
@@ -106,7 +115,7 @@ def train_models(models: dict, X_train, y_train):
 def save_models(models: dict, output_dir="models"):
     import os
     os.makedirs(output_dir, exist_ok=True)
-
+    
     for name, model in models.items():
         try:
             file_path = f"{output_dir}/{name}.pkl"

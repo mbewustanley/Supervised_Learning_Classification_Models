@@ -18,3 +18,23 @@ dvc init
 
 dvc repro
 ```
+
+## Flask
+```
+pip install flask
+
+# start backend
+python main.py
+
+# change directory to frontend folder
+cd flask_api/frontend
+
+python -m http.server 8000
+
+# visit
+http://localhost:8000
+
+
+
+
+```

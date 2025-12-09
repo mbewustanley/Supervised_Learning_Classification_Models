@@ -1,0 +1,6 @@
+{
+    "knn": "models/knn.pkl ",
+    "lr": "models/lr.pkl ",
+    "nb": "models/nb.pkl ",
+    "svm": "models/svm.pkl "
+}

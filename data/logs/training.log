@@ -46,3 +46,83 @@
 2025-12-09 05:14:10,522 - Model Training - INFO - Saved nb model to models/nb.pkl
 2025-12-09 05:14:10,525 - Model Training - INFO - Saved svm model to models/svm.pkl
 2025-12-09 05:14:10,525 - Model Training - INFO - Training completed successfully.
+2025-12-09 09:12:32,170 - Model Training - INFO - Pipeline started.
+2025-12-09 09:12:32,281 - Model Training - INFO - Successfully loaded training data.
+2025-12-09 09:12:32,283 - Model Training - ERROR - Error initializing models: [Errno 13] Permission denied: 'flask_api/frontend'
+2025-12-09 09:12:32,283 - Model Training - ERROR - Training failed: [Errno 13] Permission denied: 'flask_api/frontend'
+2025-12-09 09:30:45,467 - Model Training - INFO - Pipeline started.
+2025-12-09 09:30:45,467 - Model Training - INFO - Successfully loaded training data.
+2025-12-09 09:30:45,467 - Model Training - ERROR - Error initializing models: [Errno 13] Permission denied: 'flask_api'
+2025-12-09 09:30:45,474 - Model Training - ERROR - Training failed: [Errno 13] Permission denied: 'flask_api'
+2025-12-09 09:45:06,509 - Model Training - INFO - Pipeline started.
+2025-12-09 09:45:06,509 - Model Training - INFO - Successfully loaded training data.
+2025-12-09 09:45:06,509 - Model Training - ERROR - Error initializing models: [WinError 3] The system cannot find the path specified: ''
+2025-12-09 09:45:06,509 - Model Training - ERROR - Training failed: [WinError 3] The system cannot find the path specified: ''
+2025-12-09 09:46:40,021 - Model Training - INFO - Pipeline started.
+2025-12-09 09:46:40,037 - Model Training - INFO - Successfully loaded training data.
+2025-12-09 09:46:40,037 - Model Training - ERROR - Error initializing models: Object of type KNeighborsClassifier is not JSON serializable
+2025-12-09 09:46:40,037 - Model Training - ERROR - Training failed: Object of type KNeighborsClassifier is not JSON serializable
+2025-12-09 09:49:01,908 - Model Training - INFO - Pipeline started.
+2025-12-09 09:49:01,908 - Model Training - INFO - Successfully loaded training data.
+2025-12-09 09:49:01,908 - Model Training - INFO - Models initialized successfully.
+2025-12-09 09:49:01,908 - Model Training - INFO - Training knn...
+2025-12-09 09:49:01,940 - Model Training - INFO - knn training completed.
+2025-12-09 09:49:01,940 - Model Training - INFO - Training lr...
+2025-12-09 09:49:01,987 - Model Training - INFO - lr training completed.
+2025-12-09 09:49:01,987 - Model Training - INFO - Training nb...
+2025-12-09 09:49:01,987 - Model Training - INFO - nb training completed.
+2025-12-09 09:49:02,002 - Model Training - INFO - Training svm...
+2025-12-09 09:49:06,737 - Model Training - INFO - svm training completed.
+2025-12-09 09:49:06,755 - Model Training - INFO - Saved knn model to models/knn.pkl
+2025-12-09 09:49:06,756 - Model Training - INFO - Saved lr model to models/lr.pkl
+2025-12-09 09:49:06,758 - Model Training - INFO - Saved nb model to models/nb.pkl
+2025-12-09 09:49:06,761 - Model Training - INFO - Saved svm model to models/svm.pkl
+2025-12-09 09:49:06,761 - Model Training - INFO - Training completed successfully.
+2025-12-09 09:51:32,188 - Model Training - INFO - Pipeline started.
+2025-12-09 09:51:32,188 - Model Training - INFO - Successfully loaded training data.
+2025-12-09 09:51:32,188 - Model Training - INFO - Models initialized successfully.
+2025-12-09 09:51:32,188 - Model Training - INFO - Training knn...
+2025-12-09 09:51:32,234 - Model Training - INFO - knn training completed.
+2025-12-09 09:51:32,234 - Model Training - INFO - Training lr...
+2025-12-09 09:51:32,266 - Model Training - INFO - lr training completed.
+2025-12-09 09:51:32,266 - Model Training - INFO - Training nb...
+2025-12-09 09:51:32,281 - Model Training - INFO - nb training completed.
+2025-12-09 09:51:32,281 - Model Training - INFO - Training svm...
+2025-12-09 09:51:37,200 - Model Training - INFO - svm training completed.
+2025-12-09 09:51:37,216 - Model Training - INFO - Saved knn model to models/knn.pkl
+2025-12-09 09:51:37,216 - Model Training - INFO - Saved lr model to models/lr.pkl
+2025-12-09 09:51:37,216 - Model Training - INFO - Saved nb model to models/nb.pkl
+2025-12-09 09:51:37,216 - Model Training - INFO - Saved svm model to models/svm.pkl
+2025-12-09 09:51:37,216 - Model Training - INFO - Training completed successfully.
+2025-12-09 09:55:34,518 - Model Training - INFO - Pipeline started.
+2025-12-09 09:55:34,518 - Model Training - INFO - Successfully loaded training data.
+2025-12-09 09:55:34,518 - Model Training - INFO - Models initialized successfully.
+2025-12-09 09:55:34,518 - Model Training - INFO - Training knn...
+2025-12-09 09:55:34,565 - Model Training - INFO - knn training completed.
+2025-12-09 09:55:34,565 - Model Training - INFO - Training lr...
+2025-12-09 09:55:34,596 - Model Training - INFO - lr training completed.
+2025-12-09 09:55:34,596 - Model Training - INFO - Training nb...
+2025-12-09 09:55:34,612 - Model Training - INFO - nb training completed.
+2025-12-09 09:55:34,612 - Model Training - INFO - Training svm...
+2025-12-09 09:55:41,018 - Model Training - INFO - svm training completed.
+2025-12-09 09:55:41,034 - Model Training - INFO - Saved knn model to models/knn.pkl
+2025-12-09 09:55:41,034 - Model Training - INFO - Saved lr model to models/lr.pkl
+2025-12-09 09:55:41,034 - Model Training - INFO - Saved nb model to models/nb.pkl
+2025-12-09 09:55:41,034 - Model Training - INFO - Saved svm model to models/svm.pkl
+2025-12-09 09:55:41,034 - Model Training - INFO - Training completed successfully.
+2025-12-09 09:58:56,658 - Model Training - INFO - Pipeline started.
+2025-12-09 09:58:56,658 - Model Training - INFO - Successfully loaded training data.
+2025-12-09 09:58:56,674 - Model Training - INFO - Models initialized successfully.
+2025-12-09 09:58:56,674 - Model Training - INFO - Training knn...
+2025-12-09 09:58:56,705 - Model Training - INFO - knn training completed.
+2025-12-09 09:58:56,705 - Model Training - INFO - Training lr...
+2025-12-09 09:58:56,736 - Model Training - INFO - lr training completed.
+2025-12-09 09:58:56,736 - Model Training - INFO - Training nb...
+2025-12-09 09:58:56,752 - Model Training - INFO - nb training completed.
+2025-12-09 09:58:56,752 - Model Training - INFO - Training svm...
+2025-12-09 09:59:01,394 - Model Training - INFO - svm training completed.
+2025-12-09 09:59:01,394 - Model Training - INFO - Saved knn model to models/knn.pkl
+2025-12-09 09:59:01,394 - Model Training - INFO - Saved lr model to models/lr.pkl
+2025-12-09 09:59:01,410 - Model Training - INFO - Saved nb model to models/nb.pkl
+2025-12-09 09:59:01,410 - Model Training - INFO - Saved svm model to models/svm.pkl
+2025-12-09 09:59:01,410 - Model Training - INFO - Training completed successfully.
