@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Alpha-Gamma Classifier</title>
+    <link rel="stylesheet" href="flask_api/frontend/style.css" />
+</head>
+<body>
+
+    <div class="container">
+        <h2>Alpha-Gamma Prediction</h2>
+        <p>Enter event parameters below to predict whether it's Alpha (0) or Gamma (1).</p>
+
+        <form id="predictionForm">
+            <div class="form-group">
+                <label>fLength</label>
+                <input type="number" step="any" name="fLength" required>
+            </div>
+
+            <div class="form-group">
+                <label>fWidth</label>
+                <input type="number" step="any" name="fWidth" required>
+            </div>
+
+            <div class="form-group">
+                <label>fSize</label>
+                <input type="number" step="any" name="fSize" required>
+            </div>
+
+            <div class="form-group">
+                <label>fConc</label>
+                <input type="number" step="any" name="fConc" required>
+            </div>
+
+            <div class="form-group">
+                <label>fConc1</label>
+                <input type="number" step="any" name="fConc1" required>
+            </div>
+
+            <div class="form-group">
+                <label>fAsym</label>
+                <input type="number" step="any" name="fAsym" required>
+            </div>
+
+            <div class="form-group">
+                <label>fM3Long</label>
+                <input type="number" step="any" name="fM3Long" required>
+            </div>
+
+            <div class="form-group">
+                <label>fM3Trans</label>
+                <input type="number" step="any" name="fM3Trans" required>
+            </div>
+
+            <div class="form-group">
+                <label>fAlpha</label>
+                <input type="number" step="any" name="fAlpha" required>
+            </div>
+
+            <div class="form-group">
+                <label>fDist</label>
+                <input type="number" step="any" name="fDist" required>
+            </div>
+
+            <button type="submit">Predict</button>
+        </form>
+
+        <div id="result" class="result-box"></div>
+    </div>
+
+    <script src="flask_api/frontend/app.js"></script>
+</body>
+</html>

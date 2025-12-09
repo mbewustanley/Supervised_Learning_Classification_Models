@@ -9,3 +9,5 @@ dvc[s2]
 mlflow==2.2.2
 imblearn
 mlflow
+flask
+flask_cors
