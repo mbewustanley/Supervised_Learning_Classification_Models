@@ -4,11 +4,15 @@ import numpy as np
 from sklearn.preprocessing import StandardScaler
 from imblearn.over_sampling import RandomOverSampler
 
-df = pd.read_csv('data/raw/dataset.csv')
 
-train, valid, test = np.split(df.sample(frac=1), 
+def load_data(data_path):  #data path : 'data/raw/dataset.csv'
+    df = pd.read_csv(data_path)
+
+    train, valid, test = np.split(df.sample(frac=1), 
                               [int(0.6*len(df)), 
                                int(0.8*len(df))])
+    return train, valid, test
+
 
 def scale_dataset(dataframe, name:str, oversample=False):
     X = dataframe[dataframe.columns[:-1]].values
@@ -34,7 +38,7 @@ def scale_dataset(dataframe, name:str, oversample=False):
         
        # Define the file path, for example, in the user's home directory
        # # The `~` represents the home directory
-       save_path = os.path.join('split_data')
+       save_path = os.path.join('data/split_data')
        os.makedirs(save_path, exist_ok=True)
 
 
@@ -54,8 +58,14 @@ def scale_dataset(dataframe, name:str, oversample=False):
         raise
 
     return data, X, y
-    
 
-train, X_train, y_train = scale_dataset(train, "train", oversample=True)
-valid, X_valid, y_valid = scale_dataset(valid, "valid", oversample=False)
-test, X_test, y_test = scale_dataset(test, "test", oversample=False)
+def main():
+    train, valid, test = load_data("data/raw/dataset.csv")
+
+    train, X_train, y_train = scale_dataset(train, "train", oversample=True)
+    valid, X_valid, y_valid = scale_dataset(valid, "valid", oversample=False)
+    test, X_test, y_test = scale_dataset(test, "test", oversample=False)
+
+
+if __name__ == "__main__":
+    main()

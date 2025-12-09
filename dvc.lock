@@ -1,0 +1,126 @@
+schema: '2.0'
+stages:
+  Data_Ingestion:
+    cmd: python src/data_ingestion.py
+    deps:
+    - path: datasets/magic04.data
+      hash: md5
+      md5: f63e1b81df7b2fc5f6db7617ba257a4f
+      size: 1496411
+    - path: src/data_ingestion.py
+      hash: md5
+      md5: d3229aad3087a14901cf3964d7662110
+      size: 2591
+    outs:
+    - path: data/plots
+      hash: md5
+      md5: fb40baa8ea47534db4e79c0bbecff85b.dir
+      size: 215990
+      nfiles: 10
+    - path: data/raw
+      hash: md5
+      md5: ee9906b2cf67cf86582966177e8c77a3.dir
+      size: 1497070
+      nfiles: 1
+  Data_Scaling:
+    cmd: python src/data_scaling.py
+    deps:
+    - path: data/raw
+      hash: md5
+      md5: ee9906b2cf67cf86582966177e8c77a3.dir
+      size: 1497070
+      nfiles: 1
+    - path: src/data_scaling.py
+      hash: md5
+      md5: 7d6bea4144d080edb60f39fede8118c0
+      size: 1955
+    outs:
+    - path: split_data
+      hash: md5
+      md5: 3531c9c977e2f4bc97d63be4d479e4ba.dir
+      size: 3938624
+      nfiles: 9
+  K-NearestNeighbors:
+    cmd: python src/Models/knn.py
+    deps:
+    - path: split_data
+      hash: md5
+      md5: 3531c9c977e2f4bc97d63be4d479e4ba.dir
+      size: 3938624
+      nfiles: 9
+    - path: src/Models/knn.py
+      hash: md5
+      md5: c6165eb2cbdafb9bb0efc3ec8a282b32
+      size: 991
+    outs:
+    - path: knn_metrics.json
+      hash: md5
+      md5: 954b2d2d9dd53be91c401ce3645b5b69
+      size: 112
+    - path: knn_model.pkl
+      hash: md5
+      md5: 856743c55983dfd1bf6e6ee237fca2c2
+      size: 1516610
+  Naive_Bayes:
+    cmd: python src/Models/naive_bayes.py
+    deps:
+    - path: split_data
+      hash: md5
+      md5: 3531c9c977e2f4bc97d63be4d479e4ba.dir
+      size: 3938624
+      nfiles: 9
+    - path: src/Models/naive_bayes.py
+      hash: md5
+      md5: 2395669479b4bea81cd000172fcf44e6
+      size: 959
+    outs:
+    - path: nb_metrics.json
+      hash: md5
+      md5: 9661b9837c6df18c85bf5d9270a8fd2a
+      size: 113
+    - path: nb_model.pkl
+      hash: md5
+      md5: 106f0736c852b93ddaf67db050c8c91f
+      size: 897
+  Logistic_Regression:
+    cmd: python src/Models/LR.py
+    deps:
+    - path: split_data
+      hash: md5
+      md5: 3531c9c977e2f4bc97d63be4d479e4ba.dir
+      size: 3938624
+      nfiles: 9
+    - path: src/Models/LR.py
+      hash: md5
+      md5: 349adae188b9e648ed7172d364081532
+      size: 965
+    outs:
+    - path: lr_metrics.json
+      hash: md5
+      md5: 17da25defb448f20d527e6be06b5ab6b
+      size: 113
+    - path: lr_model.pkl
+      hash: md5
+      md5: 5c8f9c7056cd102c8e922c901e8c163e
+      size: 794
+  Support_Vector_Machine:
+    cmd: python src/Models/SVM.py
+    deps:
+    - path: split_data
+      hash: md5
+      md5: 3531c9c977e2f4bc97d63be4d479e4ba.dir
+      size: 3938624
+      nfiles: 9
+    - path: src/Models/SVM.py
+      hash: md5
+      md5: 2981cd3edf14810e06f1fe28d3fc8004
+      size: 938
+    outs:
+    - path: svm_metrics.json
+      hash: md5
+      md5: ef0bb03742263bb5dd293dc4d24449e3
+      size: 113
+    - path: svm_model.pkl
+      hash: md5
+      md5: 147cc34f19125191ac489246b6e92cd0
+      size: 598283

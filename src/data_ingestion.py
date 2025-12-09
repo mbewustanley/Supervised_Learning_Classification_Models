@@ -12,7 +12,7 @@ cols = ['fLength', 'fWidth', 'fSize', 'fConc', 'fConc1', 'fAsym',
          'fM3Long', 'fM3Trans', 'fAlpha', 'fDist', 'class']
 
 
-def load_data(data_url: str, columns : list) -> pd.DataFrame:
+def load_data(data_url: str, cols : list) -> pd.DataFrame:
     try:
         df = pd.read_csv(data_url, names=cols)
         return df
@@ -37,9 +37,10 @@ def preprocess_data(df: pd.DataFrame) -> pd.DataFrame:
             plt.ylabel('probability')
             plt.xlabel(label)
             plt.legend()
-            data_path = os.path.join('data', 'plots')
-            os.makedirs(data_path, exist_ok=True)
-            plt.savefig(os.path.join(data_path, f'{label}.png'))      
+
+            output_path = os.path.join("data/plots", f"{label}.png")
+            plt.savefig(output_path)      # <-- Correct way to save
+            plt.clf()  
         return df
     
     #error handling
@@ -51,28 +52,30 @@ def preprocess_data(df: pd.DataFrame) -> pd.DataFrame:
         print(e)
         raise
 
-
-def save_data(df: pd.DataFrame, data_path: str) -> None:
+def save_data(df: pd.DataFrame, output_file: str) -> None:
     try:
-        data_path = os.path.join(data_path, 'raw')
-        os.makedirs(data_path, exist_ok=True)
-        df.to_csv(os.path.join(data_path, "dataset.csv"), index=False)
-        
-        #error handline
+        os.makedirs("data/raw", exist_ok=True)
+        output_path = os.path.join("data/raw", output_file)
+
+        df.to_csv(output_path, index=False)   # <-- save directly to path
+        print(f"Data saved to {output_path}")
+
     except Exception as e:
         print(f"Error: An unexpected error occurred while saving the data.")
         print(e)
         raise
 
 
-def main(data_url, columns):
+def main(data_url, cols):
     try:
-        df = load_data(data_url, columns)
+        df = load_data(data_url, cols)
         final_df = preprocess_data(df)
-        save_data(final_df, data_path='data')
+        save_data(final_df, "dataset.csv")
+
     except Exception as e:
         print(f"Error: {e}")
         print("Failed to complete the data ingestion process.")
 
+
 if __name__ == '__main__':
-    main('datasets/magic04.data', cols)
+    main('data/input_data/magic04.data', cols)

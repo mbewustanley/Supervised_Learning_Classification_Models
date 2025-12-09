@@ -3,68 +3,39 @@ stages:
   Data_Ingestion:
     cmd: python src/data_ingestion.py
     deps:
-      - datasets/magic04.data 
+      - data/input_data/magic04.data 
       - src/data_ingestion.py
     outs:
       - data/plots
       - data/raw
 
 
-  Data_Scaling:
-    cmd: python src/data_scaling.py
+  Data_Preprocessing:
+    cmd: python src/data_preprocessing.py
     deps: 
       - data/raw
       - src/data_scaling.py
     outs:
-      - split_data
+      - data/split_data
 
 
-  K-NearestNeighbors:
-    cmd: python src/Models/knn.py
+  Model Training:
+    cmd: python src/train.py
     deps: 
-      - split_data
-      - src/Models/knn.py
+      - data/split_data
+      - src/train.py
     outs:
-      - knn_model.pkl
-    
-    metrics:
-      - knn_metrics.json
+      - models/
 
 
-  Naive_Bayes:
-    cmd: python src/Models/naive_bayes.py
+  Model Evaluation:
+    cmd: python src/evaluate.py
     deps: 
-      - split_data
+      - data/split_data
+      - models/
       - src/Models/naive_bayes.py
     outs:
       - nb_model.pkl
     
     metrics:
-      - nb_metrics.json
-
-
-  Logistic_Regression:
-    cmd: python src/Models/LR.py
-    deps: 
-      - split_data
-      - src/Models/LR.py
-    outs:
-      - lr_model.pkl
-
-    metrics:
-      - lr_metrics.json
-        
-        
-  Support_Vector_Machine:
-    cmd: python src/Models/SVM.py
-    deps: 
-      - split_data
-      - src/Models/SVM.py
-    outs:
-      - svm_model.pkl
-
-    metrics:
-      - svm_metrics.json
-
-
- 
+      - data/metrics/evaluation_results.json

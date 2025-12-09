@@ -1,0 +1,16 @@
+2025-12-08 23:07:00,945 - Model Training - INFO - Pipeline started.
+2025-12-08 23:07:00,947 - Model Training - INFO - Successfully loaded training data.
+2025-12-08 23:07:00,948 - Model Training - INFO - Models initialized successfully.
+2025-12-08 23:07:00,948 - Model Training - INFO - Training knn...
+2025-12-08 23:07:01,007 - Model Training - INFO - knn training completed.
+2025-12-08 23:07:01,007 - Model Training - INFO - Training lr...
+2025-12-08 23:07:01,047 - Model Training - INFO - lr training completed.
+2025-12-08 23:07:01,047 - Model Training - INFO - Training nb...
+2025-12-08 23:07:01,062 - Model Training - INFO - nb training completed.
+2025-12-08 23:07:01,063 - Model Training - INFO - Training svm...
+2025-12-08 23:07:06,546 - Model Training - INFO - svm training completed.
+2025-12-08 23:07:06,550 - Model Training - INFO - Saved knn model to models/knn.pkl
+2025-12-08 23:07:06,552 - Model Training - INFO - Saved lr model to models/lr.pkl
+2025-12-08 23:07:06,553 - Model Training - INFO - Saved nb model to models/nb.pkl
+2025-12-08 23:07:06,558 - Model Training - INFO - Saved svm model to models/svm.pkl
+2025-12-08 23:07:06,561 - Model Training - INFO - Training completed successfully.
