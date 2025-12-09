@@ -1,0 +1,39 @@
+2025-12-09 05:14:14,766 - Model Evaluation - INFO - Evaluation pipeline started.
+2025-12-09 05:14:14,776 - Model Evaluation - ERROR - Test data files not found: [Errno 2] No such file or directory: 'split_data/X_test.npy'
+2025-12-09 05:14:14,777 - Model Evaluation - ERROR - Evaluation pipeline failed: [Errno 2] No such file or directory: 'split_data/X_test.npy'
+2025-12-09 05:17:26,908 - Model Evaluation - INFO - Evaluation pipeline started.
+2025-12-09 05:17:26,908 - Model Evaluation - INFO - Successfully loaded test data.
+2025-12-09 05:17:26,908 - Model Evaluation - INFO - Loaded model: knn
+2025-12-09 05:17:26,908 - Model Evaluation - INFO - Loaded model: lr
+2025-12-09 05:17:26,924 - Model Evaluation - INFO - Loaded model: nb
+2025-12-09 05:17:26,926 - Model Evaluation - INFO - Loaded model: svm
+2025-12-09 05:17:26,926 - Model Evaluation - INFO - Evaluating model: knn
+2025-12-09 05:17:27,124 - Model Evaluation - INFO - Evaluating model: lr
+2025-12-09 05:17:27,135 - Model Evaluation - INFO - Evaluating model: nb
+2025-12-09 05:17:27,138 - Model Evaluation - INFO - Evaluating model: svm
+2025-12-09 05:17:29,595 - Model Evaluation - INFO - Saved evaluation results to data/metrics\evaluation_results.json
+2025-12-09 05:17:29,595 - Model Evaluation - INFO - Evaluation complete.
+2025-12-09 05:31:15,396 - Model Evaluation - INFO - Evaluation pipeline started.
+2025-12-09 05:31:15,396 - Model Evaluation - INFO - Successfully loaded test data.
+2025-12-09 05:31:15,412 - Model Evaluation - INFO - Loaded model: knn
+2025-12-09 05:31:15,412 - Model Evaluation - INFO - Loaded model: lr
+2025-12-09 05:31:15,412 - Model Evaluation - INFO - Loaded model: nb
+2025-12-09 05:31:15,419 - Model Evaluation - INFO - Loaded model: svm
+2025-12-09 05:31:15,419 - Model Evaluation - INFO - Evaluating model: knn
+2025-12-09 05:31:15,571 - Model Evaluation - INFO - Evaluating model: lr
+2025-12-09 05:31:15,580 - Model Evaluation - INFO - Evaluating model: nb
+2025-12-09 05:31:15,584 - Model Evaluation - INFO - Evaluating model: svm
+2025-12-09 05:31:17,960 - Model Evaluation - INFO - Saved evaluation results to data/metrics\evaluation_results.json
+2025-12-09 05:31:17,962 - Model Evaluation - INFO - Evaluation complete.
+2025-12-09 05:32:32,401 - Model Evaluation - INFO - Evaluation pipeline started.
+2025-12-09 05:32:32,405 - Model Evaluation - INFO - Successfully loaded test data.
+2025-12-09 05:32:32,407 - Model Evaluation - INFO - Loaded model: knn
+2025-12-09 05:32:32,407 - Model Evaluation - INFO - Loaded model: lr
+2025-12-09 05:32:32,407 - Model Evaluation - INFO - Loaded model: nb
+2025-12-09 05:32:32,412 - Model Evaluation - INFO - Loaded model: svm
+2025-12-09 05:32:32,412 - Model Evaluation - INFO - Evaluating model: knn
+2025-12-09 05:32:32,571 - Model Evaluation - INFO - Evaluating model: lr
+2025-12-09 05:32:32,580 - Model Evaluation - INFO - Evaluating model: nb
+2025-12-09 05:32:32,591 - Model Evaluation - INFO - Evaluating model: svm
+2025-12-09 05:32:34,993 - Model Evaluation - INFO - Saved evaluation results to data/metrics\evaluation_results.json
+2025-12-09 05:32:34,993 - Model Evaluation - INFO - Evaluation complete.

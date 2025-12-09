@@ -38,6 +38,7 @@ def preprocess_data(df: pd.DataFrame) -> pd.DataFrame:
             plt.xlabel(label)
             plt.legend()
 
+            os.makedirs("data/plots", exist_ok=True)
             output_path = os.path.join("data/plots", f"{label}.png")
             plt.savefig(output_path)      # <-- Correct way to save
             plt.clf()  

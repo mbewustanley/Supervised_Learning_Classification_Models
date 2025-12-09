@@ -46,7 +46,7 @@ def get_logger(log_file="evaluation.log"):
 logger = get_logger()
 
 
-def load_test_data(path="split_data"):
+def load_test_data(path="data/split_data"):
     try:
         X_test = np.load(f"{path}/X_test.npy")
         y_test = np.load(f"{path}/y_test.npy")

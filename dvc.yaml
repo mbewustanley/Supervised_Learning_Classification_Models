@@ -14,7 +14,7 @@ stages:
     cmd: python src/data_preprocessing.py
     deps: 
       - data/raw
-      - src/data_scaling.py
+      - src/data_preprocessing.py
     outs:
       - data/split_data
 
@@ -33,9 +33,6 @@ stages:
     deps: 
       - data/split_data
       - models/
-      - src/Models/naive_bayes.py
-    outs:
-      - nb_model.pkl
-    
+      - src/evaluate.py
     metrics:
       - data/metrics/evaluation_results.json

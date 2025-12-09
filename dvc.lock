@@ -3,19 +3,19 @@ stages:
   Data_Ingestion:
     cmd: python src/data_ingestion.py
     deps:
-    - path: datasets/magic04.data
+    - path: data/input_data/magic04.data
       hash: md5
       md5: f63e1b81df7b2fc5f6db7617ba257a4f
       size: 1496411
     - path: src/data_ingestion.py
       hash: md5
-      md5: d3229aad3087a14901cf3964d7662110
-      size: 2591
+      md5: ad18171224d4815c5d3768c654e5689c
+      size: 2661
     outs:
     - path: data/plots
       hash: md5
-      md5: fb40baa8ea47534db4e79c0bbecff85b.dir
-      size: 215990
+      md5: 744614361a0fa1a0b566ed7b54b6a872.dir
+      size: 145348
       nfiles: 10
     - path: data/raw
       hash: md5
@@ -124,3 +124,61 @@ stages:
       hash: md5
       md5: 147cc34f19125191ac489246b6e92cd0
       size: 598283
+  Data_Preprocessing:
+    cmd: python src/data_preprocessing.py
+    deps:
+    - path: data/raw
+      hash: md5
+      md5: ee9906b2cf67cf86582966177e8c77a3.dir
+      size: 1497070
+      nfiles: 1
+    - path: src/data_preprocessing.py
+      hash: md5
+      md5: aede4efd2c08602d78847077b5d90503
+      size: 2179
+    outs:
+    - path: data/split_data
+      hash: md5
+      md5: 96a1c49b9c6e143b52fbcbff22c64a8b.dir
+      size: 3934400
+      nfiles: 9
+  Model Training:
+    cmd: python src/train.py
+    deps:
+    - path: data/split_data
+      hash: md5
+      md5: 96a1c49b9c6e143b52fbcbff22c64a8b.dir
+      size: 3934400
+      nfiles: 9
+    - path: src/train.py
+      hash: md5
+      md5: cd979d5c984466d055a157b267cce8e4
+      size: 3541
+    outs:
+    - path: models/
+      hash: md5
+      md5: b55b35ac3e9b3eb44d1fadbb931342b2.dir
+      size: 2102580
+      nfiles: 4
+  Model Evaluation:
+    cmd: python src/evaluate.py
+    deps:
+    - path: data/split_data
+      hash: md5
+      md5: 96a1c49b9c6e143b52fbcbff22c64a8b.dir
+      size: 3934400
+      nfiles: 9
+    - path: models/
+      hash: md5
+      md5: b55b35ac3e9b3eb44d1fadbb931342b2.dir
+      size: 2102580
+      nfiles: 4
+    - path: src/evaluate.py
+      hash: md5
+      md5: f48e62b96c67fd42c4781a8e8412396d
+      size: 4930
+    outs:
+    - path: data/metrics/evaluation_results.json
+      hash: md5
+      md5: e7b27e259bd523cf016b676c263a8cd1
+      size: 572
