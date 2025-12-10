@@ -3,7 +3,7 @@ numpy
 matplotlib
 kagglehub
 scikit-learn
-tensorflow
+#tensorflow==2.13
 dagshub
 dvc[s2]
 mlflow==2.2.2
@@ -11,3 +11,9 @@ imblearn
 mlflow
 flask
 flask_cors
+boto3
+docker
+seaborn
+imblearn
+optuna
+#-e .

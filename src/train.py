@@ -3,6 +3,9 @@ import json
 import logging
 import numpy as np
 import pickle
+import tensorflow as tf
+import matplotlib.pyplot as plt
+
 
 from sklearn.neighbors import KNeighborsClassifier
 from sklearn.linear_model import LogisticRegression
@@ -66,8 +69,8 @@ def load_data(path="data/split_data"):
 
 
 
-# initialize Knn model
-def initialize_models(output_path="configs/model_config.json"):
+# initialize sklearn models
+def initialize_sklearn_models(output_path="configs/model_config.json"):
     try:
         models = {
             "knn": KNeighborsClassifier(n_neighbors=1),
@@ -94,7 +97,55 @@ def initialize_models(output_path="configs/model_config.json"):
 
 
 
-def train_models(models: dict, X_train, y_train,):
+# to be exported into evaluate.py
+def initialize_neural_net(X_train, y_train, num_nodes, dropout_prob, lr, batch_size, epochs):
+    try:
+        nn_model = tf.keras.Sequential([
+            tf.keras.layers.Dense(num_nodes, activation='relu', input_shape=(10)),
+            tf.keras.layers.Dropout(dropout_prob),
+            tf.keras.layers.Dense(num_nodes, activation='relu'),
+            tf.keras.layers.Dropout(dropout_prob),
+            tf.keras.layers.Dense(1, activation='sigmoid')
+        ])
+
+        nn_model.compile(
+            optimizer=tf.keras.optimizers.Adam(lr),
+            loss='binary_crossentrophy',
+            metrics=['accuracy']
+        )
+
+        history = nn_model.fit(X_train, y_train, 
+                            epochs=epochs,
+                            batch_size=batch_size,
+                            validation_split=0.2,
+                            verbose=0)
+        
+        logger.info("Neural Net Initialized and fit successfully")
+        return nn_model, history
+    
+    except Exception as e:
+        logger.error(f"Error initializing neural net: {e}")
+        raise
+    
+#to be exported to evaluate.py
+def plot_NN_history(history):
+    fig, (ax1, ax2) = plt.subplots(1,2, figsize=(10,4))
+    ax1.plot(history.history['loss'], label='loss')
+    ax1.plot(history.history['val_loss'], label='val_loss')
+    ax1.set_ylabel('Binary_crossentrophy')
+    ax1.set_xlabel('Epoch')
+    ax1.grid(True)
+
+    ax2.plot(history.history['accuracy'], label='accuracy')
+    ax2.plot(history.history['val_accuracy'], label='val_accuracy')
+    ax2.set_xlabel('Epoch')
+    ax2.set_ylabel('Accuracy')
+    ax2.grid(True)
+
+    plt.show()
+
+
+def train_sklearn_models(models: dict, X_train, y_train,):  # sklearn model training
     trained = {}
     
     for name, model in models.items():
@@ -111,8 +162,7 @@ def train_models(models: dict, X_train, y_train,):
 
 
 
-
-def save_models(models: dict, output_dir="models"):
+def save_sklearn_models(models: dict, output_dir="models"):
     import os
     os.makedirs(output_dir, exist_ok=True)
     
@@ -129,7 +179,6 @@ def save_models(models: dict, output_dir="models"):
             raise
 
 
-
 def main():
     try:
         logger.info("Pipeline started.")
@@ -138,13 +187,13 @@ def main():
         X_train, y_train = load_data()
 
         # init
-        models = initialize_models()
+        models = initialize_sklearn_models()
 
         # train
-        trained_models = train_models(models, X_train, y_train)
+        trained_models = train_sklearn_models(models, X_train, y_train)
 
         # save
-        save_models(trained_models)
+        save_sklearn_models(trained_models)
 
         logger.info("Training completed successfully.")
 

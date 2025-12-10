@@ -152,8 +152,8 @@ stages:
       nfiles: 9
     - path: src/train.py
       hash: md5
-      md5: c39beaf71bd32a71fe4c548d4a6916ec
-      size: 3881
+      md5: 9670396f041c98ce845b22b01aba7da5
+      size: 4120
     outs:
     - path: models/
       hash: md5

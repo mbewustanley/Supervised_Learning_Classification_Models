@@ -4,6 +4,7 @@
 ## Conda
 ```
 conda create -n SLCenv python=3.11 -y
+conda create -n SLC2env python=3.10 -y    for tensorflow compatibility
 
 conda activate SLCenv
 
@@ -42,9 +43,9 @@ http://localhost:8000
 - create IAM user (AdminstratorAccess), EC2 instance (Ubuntu with security groups 5000 port) and S3 bucket
 
 - In local console
-
-` aws configure 
-
+```
+aws configure 
+```
 - In EC2 Machine
 ```
 sudo apt update
@@ -67,14 +68,14 @@ pipenv install boto3
 
 pipenv shell
 
-mlflow server -h 0.0.0.0 --default-artifact-root s3://stanley-mlflow-bucket-27 --allowed-hosts "ec2-13-244-77-114.af-south-1.compute.amazonaws.com:5000"
+mlflow server -h 0.0.0.0 --default-artifact-root s3://stanley-mlflow-bucket-27 --allowed-hosts "ec2-13-247-105-61.af-south-1.compute.amazonaws.com:5000"
 ```
 
 - set URI in local terminal or code
 
 mlflow_tracking_uri:
 
-`http://ec2-13-244-77-114.af-south-1.compute.amazonaws.com:5000
+http://ec2-13-247-105-61.af-south-1.compute.amazonaws.com:5000
 
 ## DOCKER
 ```
@@ -152,7 +153,7 @@ newgrp docker
 
 - configure as self hosted runner in github:
 
-`settings>actions>runner>new self hosted runner> choose os> then run command one by one
+settings>actions>runner>new self hosted runner> choose os> then run command one by one
 
 - setup github secrets:
 ```
@@ -161,3 +162,4 @@ AWS_SECRET_ACCESS_KEY=
 AWS_REGION=
 AWS_ECR_LOGIN_URI=
 ECR_REPOSITORY_NAME=
+```
